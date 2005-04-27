@@ -24,11 +24,15 @@ Cairo module for Ruby.
 Modu³ Cairo dla Ruby.
 
 %package gtkcairo
-Summary: GTKCairo Library for Ruby
-Group:	Development/Libraries
+Summary: 	GTKCairo Library for Ruby
+Summary(pl):	Biblioteki GTKCairo dla Ruby
+Group:		Development/Libraries
 
 %description gtkcairo
 GTKCairo Library for Ruby.
+
+%description -l pl
+Biblioteki GTKCairo dla Ruby.
 
 %prep
 %setup -q -n rcairo

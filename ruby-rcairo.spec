@@ -12,8 +12,11 @@ Source0:	http://cairographics.org/~pippin/cairo/ruby/rcairo-%{snap}.tar.gz
 # Source0-md5:	a3b550934bce96eeebb9c458fe6e7237
 URL:		http://www2.giganet.net/~yoshi/
 BuildRequires:	cairo-devel
+BuildRequires:	gtkcairo-devel
+BuildRequires:	pkgconfig
 BuildRequires:	ruby-devel
-Requires:	cairo
+# mkmf-gnome2.rb
+BuildRequires:	ruby-gnome2
 Requires:	ruby
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,7 +29,7 @@ Modu³ Cairo dla Ruby.
 %package gtkcairo
 Summary: 	GTKCairo Library for Ruby
 Summary(pl):	Biblioteki GTKCairo dla Ruby
-Group:		Development/Libraries
+Group:		Development/Languages
 
 %description gtkcairo
 GTKCairo Library for Ruby.

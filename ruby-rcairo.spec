@@ -31,7 +31,7 @@ Group:		Development/Libraries
 %description gtkcairo
 GTKCairo Library for Ruby.
 
-%description -l pl
+%description gtkcairo -l pl
 Biblioteki GTKCairo dla Ruby.
 
 %prep
@@ -39,8 +39,8 @@ Biblioteki GTKCairo dla Ruby.
 
 %build
 ruby setup.rb config \
-  --site-ruby=%{ruby_rubylibdir} \
-  --so-dir=%{ruby_archdir}
+	--site-ruby=%{ruby_rubylibdir} \
+	--so-dir=%{ruby_archdir}
 ruby setup.rb setup
 
 %install
@@ -50,7 +50,6 @@ install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{_examplesdir}/%{name}-%{version}}
 ruby setup.rb install --prefix=$RPM_BUILD_ROOT
 
 cp -a samples/* $RPM_BUILD_ROOT/%{_examplesdir}/%{name}-%{version}
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT

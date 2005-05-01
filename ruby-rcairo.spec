@@ -1,10 +1,10 @@
 %define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
-%define ruby_rubylibdir %(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
+%define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 Summary:	Cairo module for Ruby
 Summary(pl):	Modu³ Cairo dla Ruby
 Name:		ruby-rcairo
 Version:	0.1
-%define snap 20050208
+%define	snap	20050208
 Release:	0.%{snap}.1
 License:	GPL
 Group:		Development/Languages

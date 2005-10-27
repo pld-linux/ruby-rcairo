@@ -1,44 +1,31 @@
 %define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
 %define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 Summary:	Cairo module for Ruby
-Summary(pl):	Modu³ Cairo dla Ruby
+Summary(pl):	Modu³ Cairo dla jêzyka Ruby
 Name:		ruby-rcairo
-Version:	0.1
-%define	snap	20050208
-Release:	0.%{snap}.1
-License:	GPL
+Version:	1.0.0
+Release:	1
+License:	GPL or custom (see COPYING)
 Group:		Development/Languages
-Source0:	http://cairographics.org/~pippin/cairo/ruby/rcairo-%{snap}.tar.gz
+Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
 # Source0-md5:	a3b550934bce96eeebb9c458fe6e7237
-URL:		http://www2.giganet.net/~yoshi/
-BuildRequires:	cairo-devel
-BuildRequires:	gtkcairo-devel
+URL:		http://cairographics.org/rcairo
+BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	pkgconfig
-BuildRequires:	ruby-devel
-# mkmf-gnome2.rb
-BuildRequires:	ruby-gnome2
-Requires:	ruby
+BuildRequires:	ruby-devel >= 1:1.8
+Requires:	ruby >= 1:1.8
+# dropped?
+Obsoletes:	ruby-rcairo-gtkcairo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Cairo module for Ruby.
 
 %description -l pl
-Modu³ Cairo dla Ruby.
-
-%package gtkcairo
-Summary: 	GTKCairo Library for Ruby
-Summary(pl):	Biblioteki GTKCairo dla Ruby
-Group:		Development/Languages
-
-%description gtkcairo
-GTKCairo Library for Ruby.
-
-%description gtkcairo -l pl
-Biblioteki GTKCairo dla Ruby.
+Modu³ Cairo dla jêzyka Ruby.
 
 %prep
-%setup -q -n rcairo
+%setup -q -n rcairo-%{version}
 
 %build
 ruby setup.rb config \
@@ -59,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc AUTHORS COPYING README ChangeLog NEWS
 %attr(755,root,root) %{ruby_archdir}/cairo.so
 %{ruby_rubylibdir}/cairo.rb
 %dir %{_examplesdir}/%{name}-%{version}
@@ -67,9 +54,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_examplesdir}/%{name}-%{version}/pdf*
 %{_examplesdir}/%{name}-%{version}/ps*
 
-%files gtkcairo
-%defattr(644,root,root,755)
-%attr(755,root,root) %{ruby_archdir}/gtkcairo.so
-%{ruby_rubylibdir}/canvas.rb
-%{_examplesdir}/%{name}-%{version}/gtk*
-%{_examplesdir}/%{name}-%{version}/canvas
+# devel?
+%{ruby_archdir}/rb_cairo.h

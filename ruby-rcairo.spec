@@ -8,7 +8,7 @@ Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	a3b550934bce96eeebb9c458fe6e7237
+# Source0-md5:	e6c6442b24155146ba986dc7774e45e3
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	pkgconfig

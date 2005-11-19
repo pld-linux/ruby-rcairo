@@ -1,5 +1,3 @@
-%define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
-%define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 Summary:	Cairo module for Ruby
 Summary(pl):	Modu³ Cairo dla jêzyka Ruby
 Name:		ruby-rcairo
@@ -12,6 +10,7 @@ Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.263
 BuildRequires:	ruby-devel >= 1:1.8
 Requires:	ruby >= 1:1.8
 # dropped?
@@ -50,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{ruby_archdir}/cairo.so
 %{ruby_rubylibdir}/cairo.rb
 %dir %{_examplesdir}/%{name}-%{version}
-%{_examplesdir}/%{name}-%{version}/png* 
+%{_examplesdir}/%{name}-%{version}/png*
 %{_examplesdir}/%{name}-%{version}/pdf*
 %{_examplesdir}/%{name}-%{version}/ps*
 

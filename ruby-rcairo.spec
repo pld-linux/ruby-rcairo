@@ -10,11 +10,12 @@ Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.263
+BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	ruby-devel >= 1:1.8
 Requires:	ruby >= 1:1.8
 # dropped?
 Obsoletes:	ruby-rcairo-gtkcairo
+%ruby_mod_ver_requires_eq
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

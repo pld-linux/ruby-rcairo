@@ -1,5 +1,5 @@
 Summary:	Cairo module for Ruby
-Summary(pl.UTF-8):   Moduł Cairo dla języka Ruby
+Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-rcairo
 Version:	1.2.0
 Release:	1

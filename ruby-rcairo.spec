@@ -1,5 +1,5 @@
 Summary:	Cairo module for Ruby
-Summary(pl):	Modu³ Cairo dla jêzyka Ruby
+Summary(pl.UTF-8):   ModuÅ‚ Cairo dla jÄ™zyka Ruby
 Name:		ruby-rcairo
 Version:	1.2.0
 Release:	1
@@ -22,8 +22,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Cairo module for Ruby.
 
-%description -l pl
-Modu³ Cairo dla jêzyka Ruby.
+%description -l pl.UTF-8
+ModuÅ‚ Cairo dla jÄ™zyka Ruby.
 
 %prep
 %setup -q -n rcairo-%{version}

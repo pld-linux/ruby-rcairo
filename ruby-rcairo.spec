@@ -1,12 +1,12 @@
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-rcairo
-Version:	1.4.0
+Version:	1.4.1
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	efb370e819e5ce354d42a01f58e39688
+# Source0-md5:	f71b78681c3986436347387c06e66ad8
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.4.0
 BuildRequires:	pkgconfig
@@ -29,16 +29,17 @@ Moduł Cairo dla języka Ruby.
 %setup -q -n rcairo-%{version}
 
 %build
-ruby setup.rb config \
-	--site-ruby=%{ruby_rubylibdir} \
-	--so-dir=%{ruby_archdir}
-ruby setup.rb setup
+ruby extconf.rb
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{_examplesdir}/%{name}-%{version}}
 
-ruby setup.rb install --prefix=$RPM_BUILD_ROOT
+%{__make} install \
+	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
+	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir}
 
 cp -a samples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -49,6 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING README ChangeLog NEWS
 %attr(755,root,root) %{ruby_archdir}/cairo.so
+%{ruby_rubylibdir}/cairo
 %{ruby_rubylibdir}/cairo.rb
 %dir %{_examplesdir}/%{name}-%{version}
 %{_examplesdir}/%{name}-%{version}/*.rb

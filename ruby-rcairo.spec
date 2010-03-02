@@ -1,12 +1,13 @@
+%define pkgname rcairo
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
-Name:		ruby-rcairo
-Version:	1.8.0
+Name:		ruby-%{pkgname}
+Version:	1.8.1
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	7ea9f0b174d379c6a0374f534c2a4e85
+# Source0-md5:	14efc24f0cbe281b32882d64f1b0d4b9
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.8.0
 BuildRequires:	pkgconfig
@@ -52,8 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{ruby_archdir}/cairo.so
 %{ruby_rubylibdir}/cairo
 %{ruby_rubylibdir}/cairo.rb
-%dir %{_examplesdir}/%{name}-%{version}
-%{_examplesdir}/%{name}-%{version}/*.rb
+%{_examplesdir}/%{name}-%{version}
 
 # devel?
 %{ruby_archdir}/rb_cairo.h

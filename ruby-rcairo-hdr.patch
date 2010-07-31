@@ -1,0 +1,6 @@
+--- rcairo-1.8.1/src/depend~	2008-06-20 13:56:19.000000000 +0200
++++ rcairo-1.8.1/src/depend	2010-07-31 23:16:15.049916358 +0200
+@@ -1,2 +1,2 @@
+ install-so:
+-	$(INSTALL_DATA) $(srcdir)/rb_cairo.h $(RUBYARCHDIR)
++	$(INSTALL_DATA) $(srcdir)/rb_cairo.h $(RUBYHDRDIR)

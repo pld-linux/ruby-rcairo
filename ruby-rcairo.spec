@@ -3,11 +3,12 @@ Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.8.1
-Release:	1
+Release:	3
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
 # Source0-md5:	14efc24f0cbe281b32882d64f1b0d4b9
+Patch0:		%{name}-hdr.patch
 URL:		http://cairographics.org/rcairo
 BuildRequires:	cairo-devel >= 1.8.0
 BuildRequires:	pkgconfig
@@ -20,6 +21,9 @@ Obsoletes:	ruby-rcairo-gtkcairo
 %{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# TODO: move this to rpm macros.build
+%define 	ruby_hdrdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubyhdrdir"]')
+
 %description
 Cairo module for Ruby.
 
@@ -28,6 +32,7 @@ Moduł Cairo dla języka Ruby.
 
 %prep
 %setup -q -n rcairo-%{version}
+%patch0 -p1
 
 %build
 ruby extconf.rb
@@ -36,10 +41,11 @@ ruby extconf.rb
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{_examplesdir}/%{name}-%{version}}
+install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_hdrdir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} install \
 	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
+	RUBYHDRDIR=$RPM_BUILD_ROOT%{ruby_hdrdir} \
 	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir}
 
 cp -a samples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -56,4 +62,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_examplesdir}/%{name}-%{version}
 
 # devel?
-%{ruby_archdir}/rb_cairo.h
+%{ruby_hdrdir}/rb_cairo.h

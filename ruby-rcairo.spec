@@ -2,20 +2,20 @@
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.10.2
+Version:	1.12.0
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	19587b3ace86a096ce8fcb316a2fb9e9
+# Source0-md5:	729d561cd1f0d0d2d653d445066889f9
 Patch0:		%{name}-hdr.patch
 URL:		http://cairographics.org/rcairo/
-BuildRequires:	cairo-devel >= 1.10.2
+BuildRequires:	cairo-devel >= 1.12.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	ruby-devel >= 1:1.8
 BuildRequires:	ruby-pkg-config
-Requires:	cairo >= 1.10.2
+Requires:	cairo >= 1.12.0
 Requires:	ruby >= 1:1.8
 # dropped?
 Obsoletes:	ruby-rcairo-gtkcairo
@@ -31,6 +31,19 @@ Cairo module for Ruby.
 %description -l pl.UTF-8
 Moduł Cairo dla języka Ruby.
 
+%package devel
+Summary:	Header file for Ruby rcairo extension
+Summary(pl.UTF-8):	Plik nagłówkowy rozszerzenia rcairo dla języka Ruby
+Group:		Development/Libraries
+Requires:	cairo-devel >= 1.12.0
+Requires:	ruby-devel >= 1:1.8
+
+%description devel
+Header file for Ruby rcairo extension.
+
+%description devel -l pl.UTF-8
+Plik nagłówkowy rozszerzenia rcairo dla języka Ruby.
+
 %prep
 %setup -q -n rcairo-%{version}
 %patch0 -p1
@@ -42,7 +55,6 @@ ruby extconf.rb
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_hdrdir},%{_examplesdir}/%{name}-%{version}}
 install -d $RPM_BUILD_ROOT{%{ruby_hdrdir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} install \
@@ -63,5 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_rubylibdir}/cairo.rb
 %{_examplesdir}/%{name}-%{version}
 
-# devel?
+%files devel
+%defattr(644,root,root,755)
 %{ruby_hdrdir}/rb_cairo.h

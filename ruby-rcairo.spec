@@ -2,12 +2,12 @@
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.12.2
+Version:	1.12.6
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	ab3c1cdc0296cd71469d6bd257296ce8
+# Source0-md5:	6e1771916e0c9c466261ba41d5212af3
 Patch0:		%{name}-hdr.patch
 URL:		http://cairographics.org/rcairo/
 BuildRequires:	cairo-devel >= 1.12.0
@@ -23,7 +23,7 @@ Obsoletes:	ruby-rcairo-gtkcairo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # TODO: move this to rpm macros.build
-%define 	ruby_hdrdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubyhdrdir"]')
+%define 	ruby_hdrdir	%(%{__ruby} -r rbconfig -e 'print RbConfig::CONFIG["rubyhdrdir"]')
 
 %description
 Cairo module for Ruby.

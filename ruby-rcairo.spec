@@ -57,7 +57,7 @@ ruby extconf.rb
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{ruby_hdrdir},%{_examplesdir}/%{name}-%{version}}
 
-%{__make} install \
+%{__make} -j1 install \
 	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
 	RUBYHDRDIR=$RPM_BUILD_ROOT%{ruby_hdrdir} \
 	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir}

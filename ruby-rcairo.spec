@@ -2,17 +2,17 @@
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.12.8
+Version:	1.12.9
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	89ab16654cfa469fe8d34c79cb2d2eb3
+# Source0-md5:	0dd7e07b9da1ac19d3ccfe229e381995
 Patch0:		%{name}-hdr.patch
 URL:		http://cairographics.org/rcairo/
 BuildRequires:	cairo-devel >= 1.12.16
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.277
+BuildRequires:	rpmbuild(macros) >= 1.410
 BuildRequires:	ruby-devel >= 1:1.8
 BuildRequires:	ruby-pkg-config
 Requires:	cairo >= 1.12.16
@@ -58,9 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{ruby_hdrdir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} -j1 install \
-	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
+	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_vendorlibdir} \
 	RUBYHDRDIR=$RPM_BUILD_ROOT%{ruby_hdrdir} \
-	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir}
+	sitearchdir=$RPM_BUILD_ROOT%{ruby_vendorarchdir}
 
 cp -a samples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -70,9 +70,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING NEWS README.rdoc
-%attr(755,root,root) %{ruby_archdir}/cairo.so
-%{ruby_rubylibdir}/cairo
-%{ruby_rubylibdir}/cairo.rb
+%attr(755,root,root) %{ruby_vendorarchdir}/cairo.so
+%{ruby_vendorlibdir}/cairo
+%{ruby_vendorlibdir}/cairo.rb
 %{_examplesdir}/%{name}-%{version}
 
 %files devel

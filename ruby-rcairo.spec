@@ -3,7 +3,7 @@ Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.14.1
-Release:	3
+Release:	4
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	http://cairographics.org/releases/rcairo-%{version}.tar.gz
@@ -19,7 +19,6 @@ Requires:	cairo >= 1.14.0
 Requires:	ruby >= 1:1.8
 # dropped?
 Obsoletes:	ruby-rcairo-gtkcairo
-%{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # TODO: move this to rpm macros.build
@@ -35,6 +34,7 @@ Moduł Cairo dla języka Ruby.
 Summary:	Header file for Ruby rcairo extension
 Summary(pl.UTF-8):	Plik nagłówkowy rozszerzenia rcairo dla języka Ruby
 Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	cairo-devel >= 1.14.0
 Requires:	ruby-devel >= 1:1.8
 

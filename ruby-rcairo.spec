@@ -2,12 +2,12 @@
 Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.16.0
+Version:	1.16.2
 Release:	1
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	https://www.cairographics.org/releases/rcairo-%{version}.tar.gz
-# Source0-md5:	8f2f89b3b97d74fb278b588939dbb370
+# Source0-md5:	cb5a50a7ae195c29d91f3da154b2cbb8
 Patch0:		%{name}-hdr.patch
 Patch1:		no-native-packages.patch
 URL:		https://www.cairographics.org/rcairo/

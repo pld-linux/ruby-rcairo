@@ -1,14 +1,6 @@
 diff -ur rcairo-1.15.10/ext/cairo/extconf.rb rcairo-1.15.10-no-native-pkgs/ext/cairo/extconf.rb
 --- rcairo-1.15.10/ext/cairo/extconf.rb	2017-10-15 16:21:01.000000000 +0200
 +++ rcairo-1.15.10-no-native-pkgs/ext/cairo/extconf.rb	2017-11-09 09:19:45.074637717 +0100
-@@ -7,7 +7,6 @@
- require 'fileutils'
- 
- require "pkg-config"
--require "native-package-installer"
- 
- checking_for(checking_message("GCC")) do
-   if macro_defined?("__GNUC__", "")
 @@ -43,29 +42,7 @@
    end
  end

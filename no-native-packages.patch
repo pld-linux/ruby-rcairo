@@ -1,7 +1,6 @@
-diff -ur rcairo-1.15.10/ext/cairo/extconf.rb rcairo-1.15.10-no-native-pkgs/ext/cairo/extconf.rb
---- rcairo-1.15.10/ext/cairo/extconf.rb	2017-10-15 16:21:01.000000000 +0200
-+++ rcairo-1.15.10-no-native-pkgs/ext/cairo/extconf.rb	2017-11-09 09:19:45.074637717 +0100
-@@ -43,29 +42,7 @@
+--- .rcairo-1.16.5/ext/cairo/extconf.rb.orig	2020-02-05 17:45:41.611038949 +0100
++++ .rcairo-1.16.5/ext/cairo/extconf.rb	2020-02-05 17:47:02.103936215 +0100
+@@ -33,30 +33,7 @@
    end
  end
  
@@ -20,15 +19,16 @@ diff -ur rcairo-1.15.10/ext/cairo/extconf.rb rcairo-1.15.10-no-native-pkgs/ext/c
 -end
 -
 -unless required_pkg_config_package([package, major, minor, micro],
+-                                   :arch_linux => "cairo",
 -                                   :debian => "libcairo2-dev",
--                                   :redhat => "cairo-devel",
 -                                   :homebrew => "cairo",
 -                                   :macports => "cairo",
--                                   :msys2 => "cairo")
+-                                   :msys2 => "cairo",
+-                                   :redhat => "cairo-devel")
 -  exit(false)
 -end
 -
 +PKGConfig.have_package(package, major, minor, micro)
  PKGConfig.have_package("cairo-ft")
  
- checking_for(checking_message("Mac OS X")) do
+ checking_for(checking_message("macOS")) do

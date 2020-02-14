@@ -3,7 +3,7 @@ Summary:	Cairo module for Ruby
 Summary(pl.UTF-8):	Moduł Cairo dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.16.5
-Release:	1
+Release:	2
 License:	GPL or custom (see COPYING)
 Group:		Development/Languages
 Source0:	https://www.cairographics.org/releases/rcairo-%{version}.tar.gz
@@ -17,6 +17,7 @@ BuildRequires:	rpmbuild(macros) >= 1.410
 BuildRequires:	ruby-devel >= 1:1.8
 BuildRequires:	ruby-native-package-installer >= 1.0.3
 BuildRequires:	ruby-pkg-config >= 1.2.2
+BuildRequires:	sed >= 4.0
 Requires:	cairo >= 1.14.0
 Requires:	ruby >= 1:1.8
 # dropped?
@@ -51,8 +52,10 @@ Plik nagłówkowy rozszerzenia rcairo dla języka Ruby.
 %patch0 -p1
 %patch1 -p1
 
+%{__sed} -i -e '1s,/usr/bin/env ruby,%{__ruby},' samples/*.rb samples/agg/*.rb
+
 %build
-ruby extconf.rb
+%{__ruby} extconf.rb
 
 %{__make}
 
